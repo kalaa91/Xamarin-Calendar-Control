@@ -22,20 +22,6 @@ namespace CalendarControl
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            //Month SelectedMonth = new Month(selectedYearNumber, selectedMonthNumber);
-            //// Get our button from the layout resource,
-            //// and attach an event to it
-            //Button Previousbtn = FindViewById<Button>(Resource.Id.btn_Prev);
-            //Button Nextbtn = FindViewById<Button>(Resource.Id.btn_Next);
-
-
-            ////txt_Current
-            //Previousbtn.Click += Previousbtn_Click;
-            //Nextbtn.Click += Nextbtn_Click;
-            //UpdateUI();
-
-
-
             FrameLayout FLayout = FindViewById<FrameLayout>(Resource.Id.fragment_calendarControl1);
 
             FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
@@ -52,60 +38,6 @@ namespace CalendarControl
 
         }
 
-        //private void Nextbtn_Click(object sender, EventArgs e)
-        //{
-        //    if (selectedMonthNumber + 1 > 12)
-        //    {
-        //        selectedMonthNumber = 1;
-        //        selectedYearNumber++;
-        //    }
-        //    else
-        //    {
-        //        selectedMonthNumber++;
-        //    }
-
-        //    UpdateUI();
-        //}
-
-        //private void Previousbtn_Click(object sender, EventArgs e)
-        //{
-        //    if (selectedMonthNumber - 1 < 1)
-        //    {
-        //        selectedMonthNumber = 12;
-        //        selectedYearNumber--;
-        //    }
-        //    else
-        //    {
-        //        selectedMonthNumber--;
-        //    }
-
-        //    UpdateUI();
-        //}
-        //void UpdateUI()
-        //{
-        //    TextView CurrentMonthText = FindViewById<TextView>(Resource.Id.txt_Current);
-        //    string monthName = new DateTime(selectedYearNumber, selectedMonthNumber, 1).ToString("MMMM", CultureInfo.InvariantCulture);
-        //    CurrentMonthText.Text = monthName + "   "+ selectedYearNumber;
-
-        //    Month SelectedMonth = new Month(selectedYearNumber, selectedMonthNumber);
-        //    //Fragment calendarFragment = FindViewById<Fragment>(Resource.Id.fragment_container);
-
-        //    //LinearLayout FLayout = FindViewById<LinearLayout>(Resource.Id.fragment_container);
-        //    //FLayout.RemoveAllViews();
-
-        //    FrameLayout FLayout = FindViewById<FrameLayout>(Resource.Id.fragment_container);
-
-        //    FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
-            
-        //    //fragmentTransaction.AddToBackStack(null);
-        //    CalendarControlFragment calendarFragment = new CalendarControlFragment();
-
-        //    //fragmentTransaction.Add(FLayout.Id, calendarFragment);
-        //    fragmentTransaction.Replace(FLayout.Id, calendarFragment);
-        //    fragmentTransaction.SetTransition(FragmentTransit.FragmentOpen);
-        //    calendarFragment.FragmentMonth = SelectedMonth;
-        //    fragmentTransaction.Commit();
-        //}
     }
 
     public class Constants
@@ -161,22 +93,6 @@ namespace CalendarControl
                 }
                 WeekDays.Add(day);
             }
-
-            //for (int i = WeekStartDayNumber; i <= 7; i++)
-            //{
-            //    //if (DaysInWeeks < 7 && i == DaysInWeeks)
-            //    //{
-            //    //    break;
-            //    //}
-
-            //    Day day = new Day();
-            //    day.Number = i ;
-            //    //else
-            //    //{
-            //    //    day.Number = i-1;
-            //    //}
-            //    WeekDays.Add(day);
-            //}
         }
     }
     public class Month
