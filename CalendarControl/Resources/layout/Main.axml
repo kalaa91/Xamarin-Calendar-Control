@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="100"
+    android:id="@+id/linearLayout1">
+<!--<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_Controls"
+        android:weightSum="30">
+        <TextView
+            android:text="Current Month"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_Current"
+            android:paddingTop="10dip"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="10" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/space1"
+            android:layout_weight="18" />
+        <Button
+            android:text="&lt;"
+            android:gravity="center"
+            android:layout_width="50dip"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_Prev"
+            android:layout_weight="1" />
+        <Button
+            android:text="&gt;"
+            android:gravity="center"
+            android:layout_width="50dip"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_Next"
+            android:layout_weight="1" />
+    </LinearLayout>-->
+<!--<LinearLayout
+        android:id="@+id/fragment_container"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"/>-->
+    <FrameLayout
+        android:id="@+id/fragment_calendarControl1"
+        android:layout_width="fill_parent"
+        android:layout_height="250dip" />
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:id="@+id/space1" />
+    <FrameLayout
+        android:id="@+id/fragment_calendarControl2"
+        android:layout_width="fill_parent"
+        android:layout_height="250dip" />
+</LinearLayout>
