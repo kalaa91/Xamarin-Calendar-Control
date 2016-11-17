@@ -80,4 +80,12 @@
             android:id="@+id/btn_pickTo"
             android:layout_weight="5" />
     </LinearLayout>
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_SelectedDates"
+        android:smoothScrollbar="true"
+        android:scrollbars="vertical" />
 </LinearLayout>

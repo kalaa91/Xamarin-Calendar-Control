@@ -75,8 +75,8 @@ namespace CalendarControl
 			// aapt resource value: 0x7f050005
 			public const int daysNames_fragment = 2131034117;
 			
-			// aapt resource value: 0x7f050012
-			public const int fragment_calendarPicker = 2131034130;
+			// aapt resource value: 0x7f050013
+			public const int fragment_calendarPicker = 2131034131;
 			
 			// aapt resource value: 0x7f050007
 			public const int fragment_mainCalendar = 2131034119;
@@ -102,8 +102,11 @@ namespace CalendarControl
 			// aapt resource value: 0x7f05000f
 			public const int lbl_ToValue = 2131034127;
 			
-			// aapt resource value: 0x7f050013
-			public const int linearLayout_WeekDays = 2131034131;
+			// aapt resource value: 0x7f050014
+			public const int linearLayout_WeekDays = 2131034132;
+			
+			// aapt resource value: 0x7f050011
+			public const int lv_SelectedDates = 2131034129;
 			
 			// aapt resource value: 0x7f050006
 			public const int sat = 2131034118;
@@ -117,29 +120,29 @@ namespace CalendarControl
 			// aapt resource value: 0x7f050001
 			public const int txt_Current = 2131034113;
 			
-			// aapt resource value: 0x7f050019
-			public const int txt_FriDay = 2131034137;
-			
-			// aapt resource value: 0x7f050015
-			public const int txt_MonDay = 2131034133;
-			
-			// aapt resource value: 0x7f050011
-			public const int txt_PickaDate = 2131034129;
-			
 			// aapt resource value: 0x7f05001a
-			public const int txt_SatDay = 2131034138;
-			
-			// aapt resource value: 0x7f050014
-			public const int txt_SunDay = 2131034132;
-			
-			// aapt resource value: 0x7f050018
-			public const int txt_ThurDay = 2131034136;
+			public const int txt_FriDay = 2131034138;
 			
 			// aapt resource value: 0x7f050016
-			public const int txt_TueDay = 2131034134;
+			public const int txt_MonDay = 2131034134;
+			
+			// aapt resource value: 0x7f050012
+			public const int txt_PickaDate = 2131034130;
+			
+			// aapt resource value: 0x7f05001b
+			public const int txt_SatDay = 2131034139;
+			
+			// aapt resource value: 0x7f050015
+			public const int txt_SunDay = 2131034133;
+			
+			// aapt resource value: 0x7f050019
+			public const int txt_ThurDay = 2131034137;
 			
 			// aapt resource value: 0x7f050017
-			public const int txt_WedDay = 2131034135;
+			public const int txt_TueDay = 2131034135;
+			
+			// aapt resource value: 0x7f050018
+			public const int txt_WedDay = 2131034136;
 			
 			static Id()
 			{
@@ -164,13 +167,16 @@ namespace CalendarControl
 			public const int HeaderList = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int ListRowLayout = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Picker = 2130903044;
+			public const int Main = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int WeekDays = 2130903045;
+			public const int Picker = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int WeekDays = 2130903046;
 			
 			static Layout()
 			{
