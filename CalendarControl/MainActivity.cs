@@ -10,11 +10,20 @@ using System.Globalization;
 
 namespace CalendarControl
 {
-    [Activity(Label = "CalendarControl", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    [Activity(Label = "Calendar", MainLauncher = true, Icon = "@drawable/icon")]
+    public class MainActivity : Activity, ISelectedDateChanged
     {
         int selectedMonthNumber = DateTime.Today.Month;
         int selectedYearNumber = DateTime.Today.Year;
+
+        public static string From { get; set; }
+        public static string To { get; set; }
+
+        public void SelectedDateChanged(string SelectedDate)
+        {
+
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -22,22 +31,54 @@ namespace CalendarControl
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            FrameLayout FLayout = FindViewById<FrameLayout>(Resource.Id.fragment_calendarControl1);
+            FrameLayout FLayout = FindViewById<FrameLayout>(Resource.Id.fragment_mainCalendar);
 
             FragmentTransaction fragmentTransaction = FragmentManager.BeginTransaction();
 
-            //fragmentTransaction.AddToBackStack(null);
             CalendarControlFragment calendarFragment = new CalendarControlFragment();
-           
 
-            //fragmentTransaction.Add(FLayout.Id, calendarFragment);
             fragmentTransaction.Replace(FLayout.Id, calendarFragment);
 
             fragmentTransaction.SetTransition(FragmentTransit.FragmentOpen);
             fragmentTransaction.Commit();
 
+            Button btn_PickFrom = FindViewById<Button>(Resource.Id.btn_pickFrom);
+            Button btn_PickTo = FindViewById<Button>(Resource.Id.btn_pickTo);
+
+            TextView txt_From = FindViewById<TextView>(Resource.Id.lbl_FromValue);
+            TextView txt_To = FindViewById<TextView>(Resource.Id.lbl_ToValue);
+
+            if (string.IsNullOrEmpty(From) && !string.IsNullOrEmpty(Intent.GetStringExtra("From")))
+            {
+                From = Intent.GetStringExtra("From") ?? string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(To) && !string.IsNullOrEmpty(Intent.GetStringExtra("To")))
+            {
+                To = Intent.GetStringExtra("To") ?? string.Empty;
+            }
+
+            txt_From.Text = From;
+            txt_To.Text = To;
+
+            if (!string.IsNullOrEmpty(From) && !string.IsNullOrEmpty(To))
+            {
+                //PopulateList();
+            }
+
+
+            btn_PickFrom.Click += (sender, e) => OpenCalendarForSelection(true);
+            btn_PickTo.Click += (sender, e) => OpenCalendarForSelection(false);
+
+
         }
 
+        private void OpenCalendarForSelection(bool IsPickingFromValue)
+        {
+            var pickerActivity = new Intent(this, typeof(PickerActivity));
+            pickerActivity.PutExtra("IsPickingFromValue", IsPickingFromValue);
+            StartActivity(pickerActivity);
+        }
     }
 
     public class Constants
@@ -75,6 +116,8 @@ namespace CalendarControl
         public int WeekStartDayNumber { get; set; }
         public List<Day> WeekDays { get; set; }
         public int MonthDaysCount { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
         public Week(int DaysInWeeks, int _WeekNumber, int _WeekStartDayNumber)
         {
             WeekDays = new List<Day>(DaysInWeeks);
@@ -116,23 +159,23 @@ namespace CalendarControl
                 if (i == 1) // if first week
                 {
                     week = new Week(7 - firstDayOfMonth, 1, firstDayOfMonth);
-                    week.MonthDaysCount = daysInMonth;
-                    MonthWeeks.Add(week);
                     dayCount += 7 - firstDayOfMonth;
                 }
                 else if (i == NumberOfWeeks) //if last week
                 {
                     week = new Week(daysInMonth - dayCount, i, 1);
-                    week.MonthDaysCount = daysInMonth;
-                    MonthWeeks.Add(week);
                 }
                 else
                 {
                     week = new Week(7, i, 1);
                     dayCount += 7;
-                    week.MonthDaysCount = daysInMonth;
-                    MonthWeeks.Add(week);
                 }
+
+                week.MonthDaysCount = daysInMonth;
+                week.Month = MonthNumber;
+                week.Year = Year;
+                MonthWeeks.Add(week);
+
             }
         }
     }

@@ -16,12 +16,23 @@ namespace CalendarControl
     {
         public Week FragmentWeek { get; set; }
         static int dayCount = 1;
-
+        ISelectedDateChanged SelectedDateChanged;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+        }
 
-            // Create your fragment here
+        public override void OnAttach(Activity activity)
+        {
+            base.OnAttach(activity);
+            try
+            {
+                SelectedDateChanged = (ISelectedDateChanged)activity;
+            }
+            catch (InvalidCastException e)
+            {
+                throw;
+            }
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -33,6 +44,7 @@ namespace CalendarControl
                 int DayIndex = FragmentWeek.WeekDays[i].Number;
                 bool IsWeekEnd = FragmentWeek.WeekDays[i].IsWeekEnd;
                 TextView CurrentDay = null;
+
                 switch (DayIndex)
                 {
                     case 0:
@@ -67,6 +79,8 @@ namespace CalendarControl
                         break;
                 }
 
+                CurrentDay.Clickable = true;
+                CurrentDay.Click += (sender, e) => GetClickedDate((sender as TextView).Text, FragmentWeek.Month, FragmentWeek.Year);
                 if (IsWeekEnd)
                 {
                     CurrentDay.SetBackgroundColor(new Android.Graphics.Color(255, 191, 0));
@@ -79,6 +93,12 @@ namespace CalendarControl
                 dayCount = 1;
             }
             return view;
+        }
+
+        private void GetClickedDate(string Day, int Month, int Year)
+        {
+            string SelectedDay = Day + "-" + Month + "-" + Year;
+            SelectedDateChanged.SelectedDateChanged(SelectedDay);
         }
     }
 }
